@@ -8,7 +8,8 @@ import { __ } from '@wordpress/i18n';
 import * as BlockEditor from '@wordpress/block-editor';
 import * as Editor from '@wordpress/editor';
 
-import edit, { bgColorOptions } from './edit';
+import edit from './edit';
+import { BgColorOptions as bgColorOptions } from '../colors';
 import { column } from '../icons';
 
 const { InnerBlocks } = BlockEditor || Editor; // Fallback to deprecated '@wordpress/editor' for backwards compatibility

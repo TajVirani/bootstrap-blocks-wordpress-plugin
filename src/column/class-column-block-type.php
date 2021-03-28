@@ -77,6 +77,9 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Column\Column_Block_Type', false ) ) 
 			'centerContent' => array(
 				'type' => 'boolean',
 			),
+			'verticalPadding' => array(
+				'type' => 'boolean',
+			),
 		);
 
 		/**

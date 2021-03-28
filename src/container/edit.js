@@ -1,9 +1,10 @@
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
 import {
-	CheckboxControl,
 	PanelBody,
 	SelectControl,
+	ColorPicker,
+	CheckboxControl,
 } from '@wordpress/components';
 import { Component, Fragment } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
@@ -62,6 +63,21 @@ let fluidBreakpointOptions = [
 	},
 ];
 
+const sideLightOptions = [
+	{
+		label: __( 'None', 'none' ),
+		value: '',
+	},
+	{
+		label: __( 'sideLight', 'sideLight' ),
+		value: 'sideLight',
+	},
+	{
+		label: __( 'Shapes Left', 'shapesLeft' ),
+		value: 'shapesLeft',
+	},
+];
+
 if ( isBootstrap5Active() ) {
 	fluidBreakpointOptions = [
 		{
@@ -88,11 +104,42 @@ class BootstrapContainerEdit extends Component {
 			setAttributes,
 			hasChildBlocks,
 		} = this.props;
-		const { isFluid, fluidBreakpoint, marginAfter } = attributes;
+		const {
+			isFluid,
+			fluidBreakpoint,
+			marginAfter,
+			sideLight,
+			backgroundColor,
+		} = attributes;
 
 		return (
 			<Fragment>
 				<InspectorControls>
+					<PanelBody
+						title={ __( 'M2 Options', 'wp-bootstrap-blocks' ) }
+					>
+						<SelectControl
+							label={ __(
+								'M2 Decoration',
+								'wp-bootstrap-blocks'
+							) }
+							value={ sideLight }
+							options={ sideLightOptions }
+							onChange={ ( sideLightOption ) => {
+								setAttributes( { sideLight: sideLightOption } );
+							} }
+						/>
+						<ColorPicker
+							label={ __(
+								'Background Color',
+								'wp-bootstrap-blocks'
+							) }
+							color={ backgroundColor }
+							onChangeComplete={ ( value ) =>
+								setAttributes( { backgroundColor: value.hex } )
+							}
+						/>
+					</PanelBody>
 					<PanelBody title={ __( 'Fluid', 'wp-bootstrap-blocks' ) }>
 						<CheckboxControl
 							label={ __( 'Fluid', 'wp-bootstrap-blocks' ) }
@@ -115,7 +162,7 @@ class BootstrapContainerEdit extends Component {
 								} );
 							} }
 							help={ __(
-								'Fluid breakpoints only work with Bootstrap v4.4+. The container will be 100% wide until the specified breakpoint is reached, after which max-widths for each of the higher breakpoints will be applied.',
+								'Fluid breakpoints aa only work with Bootstrap v4.4+. aaaaa The container will be 100% wide until the specified breakpoint is reached, after which max-widths for each of the higher breakpoints will be applied.',
 								'wp-bootstrap-blocks'
 							) }
 						/>

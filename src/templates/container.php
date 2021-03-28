@@ -30,6 +30,8 @@
  */
 
 $classes = array( 'wp-bootstrap-blocks-container' );
+$backgroundColor = '';
+$sideLight = '';
 
 if ( array_key_exists( 'isFluid', $attributes ) && $attributes['isFluid'] ) {
 	if ( array_key_exists( 'fluidBreakpoint', $attributes ) && ! empty( $attributes['fluidBreakpoint'] ) ) {
@@ -47,6 +49,14 @@ if ( array_key_exists( 'className', $attributes ) && ! empty( $attributes['class
 	array_push( $classes, $attributes['className'] );
 }
 
+if ( array_key_exists( 'sideLight', $attributes ) && ! empty( $attributes['sideLight'] ) ) {
+	$sideLight = $attributes['sideLight'];
+}
+
+if ( array_key_exists( 'backgroundColor', $attributes ) && ! empty( $attributes['backgroundColor'] ) ) {
+	$backgroundColor =  $attributes['backgroundColor'];
+}
+
 /**
  * Filters container block classes.
  *
@@ -57,6 +67,8 @@ if ( array_key_exists( 'className', $attributes ) && ! empty( $attributes['class
  */
 $classes = apply_filters( 'wp_bootstrap_blocks_container_classes', $classes, $attributes );
 ?>
+<div <?php if($backgroundColor) echo 'style="background-color: '.$backgroundColor.'"'; ?> class="<?php echo $sideLight ?>">
 <div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<?php echo $content; // phpcs:ignore ?>
+</div>
 </div>

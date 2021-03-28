@@ -41,6 +41,12 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Container\Container_Block_Type', fals
 			'marginAfter' => array(
 				'type' => 'string',
 			),
+			'sideLight' => array(
+				'type' => 'string',
+			),
+			'backgroundColor' => array(
+				'type' => 'string',
+			),
 		);
 
 		/**
@@ -52,6 +58,8 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Container\Container_Block_Type', fals
 			'isFluid' => false,
 			'fluidBreakpoint' => '',
 			'marginAfter' => 'mb-2',
+			'sideLight' => '',
+			'backgroundColor' => ''
 		);
 	}
 

@@ -17,6 +17,8 @@ import * as Editor from '@wordpress/editor';
 
 import { isBootstrap5Active } from '../helper';
 
+import { BgColorOptions } from '../colors';
+
 const { InnerBlocks, InspectorControls } = BlockEditor || Editor; // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 
 const ColumnSizeRangeControl = ( {
@@ -42,10 +44,7 @@ const ColumnSizeRangeControl = ( {
 	);
 };
 
-export let bgColorOptions = [
-	{ name: 'primary', color: '#007bff' },
-	{ name: 'secondary', color: '#6c757d' },
-];
+let bgColorOptions = BgColorOptions;
 
 bgColorOptions = applyFilters(
 	'wpBootstrapBlocks.column.bgColorOptions',
