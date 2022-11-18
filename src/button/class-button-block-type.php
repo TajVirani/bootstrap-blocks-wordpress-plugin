@@ -50,6 +50,12 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Button\Button_Block_Type', false ) ) 
 			'alignment' => array(
 				'type' => 'string',
 			),
+			'bbackgroundColor' => array(
+				'type' => 'string',
+			),
+			'bbackgroundColorHover' => array(
+				'type' => 'string',
+			),
 		);
 
 		/**
@@ -64,6 +70,8 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Button\Button_Block_Type', false ) ) 
 			'text' => '',
 			'style' => '',
 			'alignment' => '',
+			'bbackgroundColor' => '',
+			'bbackgroundColorHover' => '',
 		);
 	}
 

@@ -73,8 +73,12 @@ const sideLightOptions = [
 		value: 'sideLight',
 	},
 	{
-		label: __( 'Shapes Left', 'shapesLeft' ),
+		label: __( 'Blue Bar W/ Shapes Left', 'shapesLeft' ),
 		value: 'shapesLeft',
+	},
+	{
+		label: __( 'Shapes Left', 'shapesLeftnoBlue' ),
+		value: 'shapesLeftnoBlue',
 	},
 ];
 

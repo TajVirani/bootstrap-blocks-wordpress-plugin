@@ -9,6 +9,8 @@ import {
 	ToggleControl,
 	TextControl,
 } from '@wordpress/components';
+import { withSelect } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
 import { applyFilters } from '@wordpress/hooks';
 import * as BlockEditor from '@wordpress/block-editor';
 import * as Editor from '@wordpress/editor';
@@ -33,6 +35,10 @@ class BootstrapButtonEdit extends Component {
 			{
 				label: __( 'Secondary', 'wp-bootstrap-blocks' ),
 				value: 'secondary',
+			},
+			{
+				label: __( 'Text', 'wp-bootstrap-blocks' ),
+				value: 'text',
 			},
 		];
 		styleOptions = applyFilters(
@@ -147,4 +153,14 @@ class BootstrapButtonEdit extends Component {
 	}
 }
 
-export default BootstrapButtonEdit;
+export default compose(
+	withSelect( ( select, ownProps ) => {
+		const { clientId } = ownProps;
+		const { getBlockOrder } =
+			select( 'core/block-editor' ) || select( 'core/editor' ); // Fallback to 'core/editor' for backwards compatibility
+
+		return {
+			hasChildBlocks: getBlockOrder( clientId ).length > 0,
+		};
+	} )
+)( BootstrapButtonEdit );

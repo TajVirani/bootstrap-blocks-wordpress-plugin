@@ -41,6 +41,10 @@ if ( array_key_exists( 'align', $attributes ) && 'full' === $attributes['align']
 	array_push( $classes, 'alignfull' );
 }
 
+if ( array_key_exists( 'noMargin', $attributes ) && $attributes['noMargin'] ) {
+		array_push( $classes, 'no-margin' );
+}
+
 if ( array_key_exists( 'noGutters', $attributes ) && $attributes['noGutters'] ) {
 	if ( \WP_Bootstrap_Blocks\Settings::is_bootstrap_5_active() ) {
 		array_push( $classes, 'g-0' );
@@ -88,6 +92,19 @@ if ( array_key_exists( 'verticalAlignment', $attributes ) ) {
  */
 $classes = apply_filters( 'wp_bootstrap_blocks_row_classes', $classes, $attributes );
 ?>
+
+<?php
+    if (array_key_exists('includeContainer', $attributes) && $attributes['includeContainer']) {
+		echo '<div class="wp-bootstrap-blocks-container container mb-2">';
+    }
+?>
+
 <div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<?php echo $content; // phpcs:ignore ?>
 </div>
+
+<?php
+    if (array_key_exists('includeContainer', $attributes) && $attributes['includeContainer']) {
+		echo '</div>';
+    }
+?>

@@ -38,6 +38,12 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Row\Row_Block_Type', false ) ) :
 			'noGutters' => array(
 				'type' => 'boolean',
 			),
+			'noMargin' => array(
+				'type' => 'boolean',
+			),
+			'includeContainer' => array(
+				'type' => 'boolean',
+			),
 			'alignment' => array(
 				'type' => 'string',
 			),
@@ -63,6 +69,8 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Row\Row_Block_Type', false ) ) :
 		protected $default_attributes = array(
 			'template' => '1-1',
 			'noGutters' => false,
+			'noMargin' => false,
+			'includeContainer' => true,
 			'alignment' => '',
 			'verticalAlignment' => '',
 			'editorStackColumns' => false,

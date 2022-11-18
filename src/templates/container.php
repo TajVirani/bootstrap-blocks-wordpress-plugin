@@ -67,7 +67,7 @@ if ( array_key_exists( 'backgroundColor', $attributes ) && ! empty( $attributes[
  */
 $classes = apply_filters( 'wp_bootstrap_blocks_container_classes', $classes, $attributes );
 ?>
-<div <?php if($backgroundColor) echo 'style="background-color: '.$backgroundColor.'"'; ?> class="<?php echo $sideLight ?>">
+<div <?php if($backgroundColor) echo 'style="background-color: '.$backgroundColor.'"'; ?> class="<?php echo $sideLight ?> <?php ($sideLight || $backgroundColor) ? 'container_padding' : '' ?>">
 <div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<?php echo $content; // phpcs:ignore ?>
 </div>

@@ -266,6 +266,8 @@ class BootstrapRowEdit extends Component {
 		const {
 			template: selectedTemplateName,
 			noGutters,
+			noMargin,
+			includeContainer,
 			alignment,
 			verticalAlignment,
 			editorStackColumns,
@@ -386,12 +388,30 @@ class BootstrapRowEdit extends Component {
 						title={ __( 'Row options', 'wp-bootstrap-blocks' ) }
 					>
 						<CheckboxControl
+							label={ __( 'No Margin Top', 'wp-bootstrap-blocks' ) }
+							checked={ noMargin }
+							onChange={ ( isChecked ) =>
+								setAttributes( { noMargin: isChecked } )
+							}
+						/>
+						<CheckboxControl
 							label={ __( 'No Gutters', 'wp-bootstrap-blocks' ) }
 							checked={ noGutters }
 							onChange={ ( isChecked ) =>
 								setAttributes( { noGutters: isChecked } )
 							}
 						/>
+						<CheckboxControl
+							label={ __(
+								'Include Container',
+								'wp-bootstrap-blocks'
+							) }
+							checked={ includeContainer }
+							onChange={ ( isChecked ) =>
+								setAttributes( { includeContainer: isChecked } )
+							}
+						/>
+
 						{ isBootstrap5Active() && ! noGutters && (
 							<Fragment>
 								<SelectControl

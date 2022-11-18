@@ -39,6 +39,10 @@ if ( array_key_exists( 'style', $attributes ) && ! empty( $attributes['style'] )
 	array_push( $btn_classes, 'btn-primary' );
 }
 
+if ( array_key_exists( 'backgroundColor', $attributes ) && ! empty( $attributes['backgroundColor'] ) ) {
+	$backgroundColor =  $attributes['backgroundColor'];
+}
+
 /**
  * Filters button wrapper block classes.
  *
@@ -59,7 +63,7 @@ $classes = apply_filters( 'wp_bootstrap_blocks_button_wrapper_classes', $classes
  */
 $btn_classes = apply_filters( 'wp_bootstrap_blocks_button_classes', $btn_classes, $attributes );
 ?>
-<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" <?php if($backgroundColor) echo 'style="background-color: '.$backgroundColor.'"'; ?>>
 	<a
 		href="<?php echo esc_url( $attributes['url'] ); ?>"
 		<?php if ( ! empty( $attributes['linkTarget'] ) ) : ?>
@@ -70,6 +74,6 @@ $btn_classes = apply_filters( 'wp_bootstrap_blocks_button_classes', $btn_classes
 		<?php endif; ?>
 		class="<?php echo esc_attr( implode( ' ', $btn_classes ) ); ?>"
 	>
-		<?php echo esc_html( $attributes['text'] ); ?>
+		<?php echo  $attributes['text']; ?>
 	</a>
 </div>
